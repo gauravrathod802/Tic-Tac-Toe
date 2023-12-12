@@ -53,6 +53,9 @@ const showWinner=(winner)=>{
     msg.innerText= `Congratulations, Winner is ${winner}`;
     msgContainer.classList.remove("hide");
     disabledBoxes();
+    boxes.forEach((box) => {
+        box.classList.remove("O-color", "X-color");
+    });
     moveCount=0;
 };
 const checkDraw=()=>{
@@ -67,7 +70,10 @@ const checkDraw=()=>{
 const resetGame=()=>{
     isPlayerOTurn=true;
     enabledBoxes();
-    msgContainer.classList.add("hide")
+    msgContainer.classList.add("hide");
+    boxes.forEach((box) => {
+        box.classList.remove("O-color", "X-color");
+    });
     moveCount=0;
 };
 const checkWinner=()=>{

@@ -53,9 +53,6 @@ const showWinner=(winner)=>{
     msg.innerText= `Congratulations, Winner is ${winner}`;
     msgContainer.classList.remove("hide");
     disabledBoxes();
-    boxes.forEach((box) => {
-        box.classList.remove("O-color", "X-color");
-    });
     moveCount=0;
 };
 const checkDraw=()=>{
@@ -73,14 +70,22 @@ const resetGame=()=>{
     msgContainer.classList.add("hide");
     boxes.forEach((box) => {
         box.classList.remove("O-color", "X-color");
+        box.classList.remove("winner-background");
+        box.classList.remove("winner-background");
+        box.classList.remove("winner-background");
     });
+
+
     moveCount=0;
 };
 const checkWinner=()=>{
     for(let pattern of winPattern){
-        // console.log(pattern[0],pattern[1],pattern[2]);
-        // console.log(boxes[pattern[0]].innerText, boxes[pattern[1]].innerText, boxes[pattern[2]].innerText);
-        
+        // Only boxes
+        let pos1 = boxes[pattern[0]];
+        let pos2 = boxes[pattern[1]];
+        let pos3 = boxes[pattern[2]];
+
+        // inner text of a box
         let pos1Value= boxes[pattern[0]].innerText;
         let pos2Value= boxes[pattern[1]].innerText;
         let pos3Value= boxes[pattern[2]].innerText;
@@ -89,6 +94,9 @@ const checkWinner=()=>{
             if(pos1Value === pos2Value && pos2Value === pos3Value){
                 console.log("winner", pos1Value);
                 showWinner(pos1Value);
+                pos1.classList.add("winner-background");
+                pos2.classList.add("winner-background");
+                pos3.classList.add("winner-background");
                 moveCount=0;
             }        
         }

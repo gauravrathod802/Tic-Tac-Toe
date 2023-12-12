@@ -74,8 +74,6 @@ const resetGame=()=>{
         box.classList.remove("winner-background");
         box.classList.remove("winner-background");
     });
-
-
     moveCount=0;
 };
 const checkWinner=()=>{
